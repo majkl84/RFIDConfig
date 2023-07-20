@@ -25,7 +25,7 @@
     - set_repeattime() - количество считываний RFID-меток (тонкая настройка)
     - set_min_hold_ms() - минимальное время включения цифрового триггерного порта Hold 
 ### Настройка параметров периферийных устройств (peripheryconfig)    
-    - get_periphery_params() - получить параметры периферии
+    - get_periphery_params() - Запрос всех параметров
     - set_relay1_enable() - вкл./выкл. реле
     - set_relay1_timer() - установить таймер для реле
     - set_wiegand1_enable() - вкл./выкл. Wiegand

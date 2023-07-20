@@ -69,19 +69,21 @@ class RFIDConfig:
 
     def get_periphery_params(self):
         url = f"{self.base_url}/peripheryconfig"
-        response = requests.get(url)
-        return response.json()
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        params = response.json()
+        return params
 
     def set_relay1_enable(self, value):
-        url = f"{self.base_url}/peripheryconfig?relay1_enable=bool"
-        data = {"relay1_enable": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/rfidconfig?relay1_enable={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
     def set_relay1_timer(self, value):
-        url = f"{self.base_url}/peripheryconfig?relay1_timer=value"
-        data = {"relay1_timer": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/rfidconfig?relay1_timer={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
     def set_wiegand1_enable(self, value):
@@ -133,25 +135,28 @@ class RFIDConfig:
 
     def get_tag_identity_params(self):
         url = f"{self.base_url}/tagidentity"
-        response = requests.get(url)
-        return response.json()
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        params = response.json()
+        return params
 
-    def set_tag_list(self, value):
-        url = f"{self.base_url}/tagidentity?taglist=bool"
-        data = {"taglist": value}
-        response = requests.get(url, data=data)
-        return response
+    def set_tag_list(self):
+        url = f"{self.base_url}/tagidentity?taglist=true"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        params = response.json()
+        return params
 
     def set_valid_time_ms(self, value):
-        url = f"{self.base_url}/tagidentity?validtime_ms=value"
-        data = {"validtime_ms": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/rfidconfig?validtime_ms={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
     def set_hold_time_ms(self, value):
-        url = f"{self.base_url}/tagidentity?hold_time_ms=value"
-        data = {"hold_time_ms": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/rfidconfig?hold_time_ms={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
     def set_rssi_filter_value(self, value):
