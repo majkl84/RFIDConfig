@@ -82,13 +82,14 @@
     - set_relay1() - управление реле 1
 ----------------------------------------------------------------
 ## Примеры
-### Получение текущих настроек RFID:
-    rfid = RFIDConfig('http://192.168.0.100')
-    params = rfid.get_params()
+    rfid_config = RFIDConfig("http://192.168.10.1", "admin", "admin")
+### Получение текущих настроек RFID:    
+    params = rfid_config.get_params()
+    print(params)
 
 ### Включение режима непрерывной инвентаризации:
 
-    rfid.set_infinite_inventory(True)
+    response = rfid_config.set_infinite_inventory(True)
 
 ### Установка мощности антенны на 20 дБм:
 
