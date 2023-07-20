@@ -13,7 +13,7 @@
 ##    Методы:
 ### Настройка параметров RFID-тракт (rfidconfig) 
     - get_params() - получить текущие параметры конфигурации RFID
-    - set_infinite_inventory() - установить режим инвентаризации
+    - set_continuous_scanning() - вкл./выкл. непрерывного сканирования
     - set_power_antenna() - установить мощность антенны 
     - set_enable_antenna() - вкл./выкл. антенну
     - set_enable_trigger() - вкл./выкл. триггер

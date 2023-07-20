@@ -15,7 +15,7 @@ class RFIDConfig:
         params = response.json()
         return params
 
-    def set_infinite_inventory(self, value):
+    def set_continuous_scanning(self, value):
         url = f"{self.base_url}/rfidconfig?infiniteinventory={str(value).lower()}"
         response = requests.get(url, auth=(self.login, self.password))
         response.raise_for_status()

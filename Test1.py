@@ -5,7 +5,7 @@ if __name__ == '__main__':
     # params = rfid_config.get_params()
     # print(params)
 
-    # response = rfid_config.set_infinite_inventory(True)
+    # response = rfid_config.set_continuous_scanning(True)
     # print(response.status_code)
 
     response = rfid_config.set_power_antenna(19)
