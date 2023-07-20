@@ -78,3 +78,35 @@ class RFIDConfig:
     - beep_device() - звуковой сигнал
     - inventory_once() - однократная инвентаризация
     - set_relay1() - управление реле 1
+
+## Примеры
+### Получение текущих настроек RFID:
+    rfid = RFIDConfig('http://192.168.0.100')
+    params = rfid.get_params()
+
+### Включение режима непрерывной инвентаризации:
+
+    rfid.set_infinite_inventory(True)
+
+### Установка мощности антенны на 20 дБм:
+
+    rfid.set_power_antenna(20)
+
+### Включение фильтра по RSSI -80 дБм:
+
+    rfid.set_rssi_filter_enable(True)
+    rfid.set_rssi_filter_value(80)
+
+### Добавление префикса в уведомления UART:
+ 
+    rfid.set_add_prefix("RFID:")
+
+### Подключение к WiFi сети:
+
+    rfid.set_wificonnect("MyWiFi", "password123", False)
+
+### Перезагрузка устройства:
+
+    rfid.reboot()
+
+Таким образом, класс позволяет управлять всеми основными параметрами RFID-считывателя и интегрировать его в различные системы.
