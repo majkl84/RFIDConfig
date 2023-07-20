@@ -1,5 +1,3 @@
-[TOC]
-
 # SAUK-RFIDConfig
 
 ## class RFIDConfig:
