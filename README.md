@@ -36,34 +36,37 @@
     - set_timeout_logical_0() - таймаут логического 0
     - set_timeout_next_bit() - таймаут следующего бита
 ### Настройка параметров идентификации RFID-меток (tagidentity)
-    - get_tag_identity_params() - получить параметры идентификации
-    - set_tag_list() - вкл./выкл. список меток
-    - set_valid_time_ms() - время валидности метки
-    - set_hold_time_ms() - время удержания метки
-    - set_rssi_filter_value() - значение фильтра RSSI
-    - set_rssi_filter_enable() - вкл./выкл. фильтр RSSI
-    - set_epc_access_password() - пароль доступа к EPC
+    - get_tag_identity_params() - возвращаем все параметры
+    - set_tag_list() - возвращаем все параметры + таблицу идентификации
+    - set_valid_time_ms() - Новое значение "Время сна RFID-метки", миллисекунды
+    - set_hold_time_ms() - Новое значение "Время удержания метки в таблице инвентаризации", миллисекунды
+    - set_rssi_filter_value() - Новое значение RSSI фильтра (всегда отрицательная величина), дБ
+    - set_rssi_filter_enable() - вкл./выкл. проверку уровня сигнала от метки, RSSI
+    - set_epc_access_password() - Пароль AccessPassord, который проверяется на метках Элемент проверки «Свой-чужой»
     - set_epc_filter_value1() - значение фильтра EPC
-    - set_epc_filter_enable1() - вкл./выкл. фильтр EPC
-    - set_beep_on_tag() - вкл./выкл. звук при считывании
-    - set_extra_mem_read() - чтение доп. памяти
-    - set_extra_mem_bank() - банк доп. памяти
-    - set_data_start_words() - начало данных доп. памяти 
-    - set_data_len_words() - длина данных доп. памяти
+    - set_epc_filter_enable1() - вкл./выкл. проверку EPC-фильтра Элемент проверка «Свой-чужой»
+    - set_beep_on_tag() - вкл./выкл. подачу звукового сигнала при обнаружении RFID-метки, если метка прошла процесс проверки «Свой-чужой»
+    - set_extra_mem_read() - Чтение дополнительного сектора памяти. Элемент проверка «Свой-чужой»
+    - set_extra_mem_bank() - Номер банка памяти из которого будем читать данные. Элемент проверка «Свой-чужой»
+    - set_data_start_words() - Первый блок памяти который будет читаться (в словах, по 2 байта)
+    - set_data_len_words() - Количество данных, которые будут читаться (в словах, по 2 байта
 ### Настройка уведомлений о RFID-метках, отправляемых по каналу уведомлений UART (RS232, RS485)
     - set_notify_uart() - вкл./выкл. уведомления UART
-    - set_notify_uart_json() - формат JSON уведомлений UART
-    - set_add_prefix() - добавить префикс в уведомление 
-    - set_add_epcl() - добавить длину EPC
-    - set_add_epc() - добавить EPC
-    - set_add_tidl() - добавить длину TID
-    - set_add_tid() - добавить TID
-    - set_add_suffix() - добавить суффикс
-    - set_add_crlf() - добавить CRLF 
-    - set_add_ant() - добавить номер антенны
-    - set_add_rssi() - добавить RSSI
-    - set_notify_uart_alive() - отправка keep-alive
-    - set_notify_uart_speed() - скорость UART
+    - set_notify_uart_json() - Изменение протокола уведомлений: 
+                                                0-байтовый, 
+                                                1-JSON строки,
+                                                2-строки ASCII
+    - set_add_prefix() - к посылке по UART добавить префикс, строка до 4 байт
+    - set_add_epcl() - к посылке по UART добавить длину EPC-кода (измеряемую в байтах)
+    - set_add_epc() - к посылке по UART добавить код EPC
+    - set_add_tidl() - к посылке по UART добавить длину TID-кода (измеряемую в байтах)
+    - set_add_tid() - к посылке по UART добавить код TID
+    - set_add_suffix() - к посылке по UART добавить префикс, строка до 4 байт
+    - set_add_crlf() - к посылке по UART добавлять «возврат каретки \r 0x0D CR» и «перевод строки \n 0x0A LF» 
+    - set_add_ant() - к посылке по UART добавить номер антенны, которая обнаружила метку
+    - set_add_rssi() - к посылке по UART добавить силу сигнала от метки RSSI
+    - set_notify_uart_alive() - Разрешить \ Запретить отправку сообщений KeepAlive по UART
+    - set_notify_uart_speed() - Изменение скорости работы UART (RS232, RS485)
 ### Настройка параметров уведомления хоста (tagidentity/notify)
     - set_notify_ip() - IP адрес уведомлений 
     - set_notify_port() - порт уведомлений
