@@ -74,59 +74,59 @@ class RFIDConfig:
         params = response.json()
         return params
 
-    # def set_relay1_enable(self, value):
-    #     url = f"{self.base_url}/rfidconfig?relay1_enable={str(value).lower()}"
-    #     response = requests.get(url, auth=(self.login, self.password))
-    #     response.raise_for_status()
-    #     return response
-    #
-    # def set_relay1_timer(self, value):
-    #     url = f"{self.base_url}/rfidconfig?relay1_timer={value}"
-    #     response = requests.get(url, auth=(self.login, self.password))
-    #     response.raise_for_status()
-    #     return response
-    #
-    # def set_wiegand1_enable(self, value):
-    #     url = f"{self.base_url}/peripheryconfig?wiegand1_enable=bool"
-    #     data = {"wiegand1_enable": value}
-    #     response = requests.get(url, data=data)
-    #     return response
-    #
-    # def set_wiegand1_type(self, value):
-    #     url = f"{self.base_url}/peripheryconfig?wiegand1_type=value"
-    #     data = {"wiegand1_type": value}
-    #     response = requests.get(url, data=data)
-    #     return response
-    #
-    # def set_wiegand1_shift_bytes(self, value):
-    #     url = f"{self.base_url}/peripheryconfig?wiegand1_shift_bytes=value"
-    #     data = {"wiegand1_shift_bytes": value}
-    #     response = requests.get(url, data=data)
-    #     return response
-    #
-    # def set_wiegand1_source(self, value):
-    #     url = f"{self.base_url}/peripheryconfig?wiegand1_source=value"
-    #     data = {"wiegand1_source": value}
-    #     response = requests.get(url, data=data)
-    #     return response
-    #
-    # def set_beep_on_start(self, value):
-    #     url = f"{self.base_url}/peripheryconfig?beep_on_start=bool"
-    #     data = {"beep_on_start": value}
-    #     response = requests.get(url, data=data)
-    #     return response
-    #
-    # def set_timeout_logical_0(self, value):
-    #     url = f"{self.base_url}/peripheryconfig?timeout_logical_0=value"
-    #     data = {"timeout_logical_0": value}
-    #     response = requests.get(url, data=data)
-    #     return response
-    #
+    def set_relay_unit_enable(self, value):
+        url = f"{self.base_url}/peripheryconfig?smartboard_enable={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+
+    def set_relay_enable(self, value, ch):
+        url = f"{self.base_url}/peripheryconfig?smartboard_port{ch}_enable={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+    def set_relay_timer(self, value, ch):
+        url = f"{self.base_url}/peripheryconfig?smartboard_port{ch}_timer={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+
+    def set_wiegand_enable(self, value, ch):
+        url = f"{self.base_url}/peripheryconfig?wiegand{ch}_enable={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+    def set_wiegand_type(self, value):
+        url = f"{self.base_url}/peripheryconfig?wiegand1_type={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+    def set_wiegand_shift_bytes(self, value):
+        url = f"{self.base_url}/peripheryconfig?wiegand1_shift_bytes={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+    def set_wiegand_source(self, value):
+        url = f"{self.base_url}/peripheryconfig?wiegand1_source={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+    def set_beep_on_start(self, value):
+        url = f"{self.base_url}/peripheryconfig?beep_on_start={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+    def set_timeout_logical(self, value):
+        url = f"{self.base_url}/peripheryconfig?timeout_logical_0={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
+        return response
+
 
     def set_timeout_next_bit(self, value):
-        url = f"{self.base_url}/peripheryconfig?timeout_next_bit=value"
-        data = {"timeout_next_bit": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/peripheryconfig?timeout_next_bit={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
 ########################################################################
@@ -148,76 +148,76 @@ class RFIDConfig:
         return params
 
     def set_valid_time_ms(self, value):
-        url = f"{self.base_url}/rfidconfig?validtime_ms={value}"
+        url = f"{self.base_url}/tagidentity?validtime_ms={value}"
         response = requests.get(url, auth=(self.login, self.password))
         response.raise_for_status()
         return response
-
+###????
     def set_hold_time_ms(self, value):
-        url = f"{self.base_url}/rfidconfig?hold_time_ms={value}"
+        url = f"{self.base_url}/tagidentity?hold_time_ms={value}"
         response = requests.get(url, auth=(self.login, self.password))
         response.raise_for_status()
         return response
 
     def set_rssi_filter_value(self, value):
-        url = f"{self.base_url}/tagidentity?rssi_filter_value=-value"
-        data = {"rssi_filter_value": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/tagidentity?rssi_filter_value={-value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
     def set_rssi_filter_enable(self, value):
-        url = f"{self.base_url}/tagidentity?rssi_filter_enable=bool"
-        data = {"rssi_filter_enable": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/tagidentity?rssi_filter_enable={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
     def set_epc_access_password(self, value):
-        url = f"{self.base_url}/tagidentity?epc_access_password=value"
-        data = {"epc_access_password": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/tagidentity?epc_access_password={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
-    def set_epc_filter_value1(self, value):
-        url = f"{self.base_url}/tagidentity?epc_filter_value1=*"
-        data = {"epc_filter_value1": value}
-        response = requests.get(url, data=data)
+    def set_epc_filter_value(self, value, filter):
+        url = f"{self.base_url}/tagidentity?epc_filter_value{filter}={value}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
-    def set_epc_filter_enable1(self, value):
-        url = f"{self.base_url}/tagidentity?epc_filter_enable1=bool"
-        data = {"epc_filter_enable1": value}
-        response = requests.get(url, data=data)
+    def set_epc_filter_enable(self, value, filter):
+        url = f"{self.base_url}/tagidentity?epc_filter_enable{filter}={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
     def set_beep_on_tag(self, value):
-        url = f"{self.base_url}/tagidentity?beep_on_tag=bool"
-        data = {"beep_on_tag": value}
-        response = requests.get(url, data=data)
+        url = f"{self.base_url}/tagidentity?beep_on_tag={str(value).lower()}"
+        response = requests.get(url, auth=(self.login, self.password))
+        response.raise_for_status()
         return response
 
-    def set_extra_mem_read(self, value):
-        url = f"{self.base_url}/tagidentity?extra_mem_read=bool"
-        data = {"extra_mem_read": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_extra_mem_bank(self, value):
-        url = f"{self.base_url}/tagidentity?extra_mem_bank=value"
-        data = {"extra_mem_bank": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_data_start_words(self, value):
-        url = f"{self.base_url}/tagidentity?data_start_words=value"
-        data = {"data_start_words": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_data_len_words(self, value):
-        url = f"{self.base_url}/tagidentity?data_len_words=value"
-        data = {"data_len_words": value}
-        response = requests.get(url, data=data)
-        return response
+    # def set_extra_mem_read(self, value):
+    #     url = f"{self.base_url}/tagidentity?extra_mem_read=bool"
+    #     data = {"extra_mem_read": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_extra_mem_bank(self, value):
+    #     url = f"{self.base_url}/tagidentity?extra_mem_bank=value"
+    #     data = {"extra_mem_bank": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_data_start_words(self, value):
+    #     url = f"{self.base_url}/tagidentity?data_start_words=value"
+    #     data = {"data_start_words": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_data_len_words(self, value):
+    #     url = f"{self.base_url}/tagidentity?data_len_words=value"
+    #     data = {"data_len_words": value}
+    #     response = requests.get(url, data=data)
+    #     return response
 
 ########################################################################
 
