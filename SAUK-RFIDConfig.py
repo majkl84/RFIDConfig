@@ -5,6 +5,7 @@ class RFIDConfig:
     def __init__(self, base_url):
         self.base_url = base_url
 
+### Настройка параметров RFID-тракта (rfidconfig)
     def get_params(self):
         url = f"{self.base_url}/rfidconfig?infiniteinventory=bool"
         response = requests.get(url)
@@ -53,7 +54,345 @@ class RFIDConfig:
         return response
 
     def set_min_hold_ms(self, value):
-        url = f"{self.base_url}/rfidconfig/min_hold_ms=value"
+        url = f"{self.base_url}/rfidconfig?min_hold_ms=value"
         data = {"min_hold_ms": value}
         response = requests.post(url, data=data)
         return response
+
+################################################################
+
+### Настройка параметров периферийных устройств (peripheryconfig)
+
+    def get_periphery_params(self):
+        url = f"{self.base_url}/peripheryconfig"
+        response = requests.get(url)
+        return response.json()
+
+    def set_relay1_enable(self, value):
+        url = f"{self.base_url}/peripheryconfig?relay1_enable=bool"
+        data = {"relay1_enable": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_relay1_timer(self, value):
+        url = f"{self.base_url}/peripheryconfig?relay1_timer=value"
+        data = {"relay1_timer": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_wiegand1_enable(self, value):
+        url = f"{self.base_url}/peripheryconfig?wiegand1_enable=bool"
+        data = {"wiegand1_enable": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_wiegand1_type(self, value):
+        url = f"{self.base_url}/peripheryconfig?wiegand1_type=value"
+        data = {"wiegand1_type": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_wiegand1_shift_bytes(self, value):
+        url = f"{self.base_url}/peripheryconfig?wiegand1_shift_bytes=value"
+        data = {"wiegand1_shift_bytes": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_wiegand1_source(self, value):
+        url = f"{self.base_url}/peripheryconfig?wiegand1_source=value"
+        data = {"wiegand1_source": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_beep_on_start(self, value):
+        url = f"{self.base_url}/peripheryconfig?beep_on_start=bool"
+        data = {"beep_on_start": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_timeout_logical_0(self, value):
+        url = f"{self.base_url}/peripheryconfig?timeout_logical_0=value"
+        data = {"timeout_logical_0": value}
+        response = requests.post(url, data=data)
+        return response
+
+
+    def set_timeout_next_bit(self, value):
+        url = f"{self.base_url}/peripheryconfig?timeout_next_bit=value"
+        data = {"timeout_next_bit": value}
+        response = requests.post(url, data=data)
+        return response
+
+########################################################################
+
+### Настройка параметров идентификации RFID-меток (tagidentity)
+
+    def get_tag_identity_params(self):
+        url = f"{self.base_url}/tagidentity"
+        response = requests.get(url)
+        return response.json()
+
+    def set_tag_list(self, value):
+        url = f"{self.base_url}/tagidentity?taglist=bool"
+        data = {"taglist": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_valid_time_ms(self, value):
+        url = f"{self.base_url}/tagidentity?validtime_ms=value"
+        data = {"validtime_ms": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_hold_time_ms(self, value):
+        url = f"{self.base_url}/tagidentity?hold_time_ms=value"
+        data = {"hold_time_ms": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_rssi_filter_value(self, value):
+        url = f"{self.base_url}/tagidentity?rssi_filter_value=-value"
+        data = {"rssi_filter_value": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_rssi_filter_enable(self, value):
+        url = f"{self.base_url}/tagidentity?rssi_filter_enable=bool"
+        data = {"rssi_filter_enable": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_epc_access_password(self, value):
+        url = f"{self.base_url}/tagidentity?epc_access_password=value"
+        data = {"epc_access_password": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_epc_filter_value1(self, value):
+        url = f"{self.base_url}/tagidentity?epc_filter_value1=*"
+        data = {"epc_filter_value1": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_epc_filter_enable1(self, value):
+        url = f"{self.base_url}/tagidentity?epc_filter_enable1=bool"
+        data = {"epc_filter_enable1": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_beep_on_tag(self, value):
+        url = f"{self.base_url}/tagidentity?beep_on_tag=bool"
+        data = {"beep_on_tag": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_extra_mem_read(self, value):
+        url = f"{self.base_url}/tagidentity?extra_mem_read=bool"
+        data = {"extra_mem_read": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_extra_mem_bank(self, value):
+        url = f"{self.base_url}/tagidentity?extra_mem_bank=value"
+        data = {"extra_mem_bank": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_data_start_words(self, value):
+        url = f"{self.base_url}/tagidentity?data_start_words=value"
+        data = {"data_start_words": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_data_len_words(self, value):
+        url = f"{self.base_url}/tagidentity?data_len_words=value"
+        data = {"data_len_words": value}
+        response = requests.post(url, data=data)
+        return response
+
+########################################################################
+
+###Настройка уведомлений о RFID-метках, отправляемых по каналу уведомлений UART (RS232, RS485)
+
+    def set_notify_uart(self, value):
+        url = f"{self.base_url}/tagidentity?notify_uart=bool"
+        data = {"notify_uart": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_notify_uart_json(self, value):
+        url = f"{self.base_url}/tagidentity?notify_uart_json=value"
+        data = {"notify_uart_json": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_prefix(self, value):
+        url = f"{self.base_url}/tagidentity?add_prefix=String"
+        data = {"add_prefix": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_epcl(self, value):
+        url = f"{self.base_url}/tagidentity?add_epcl=bool"
+        data = {"add_epcl": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_epc(self, value):
+        url = f"{self.base_url}/tagidentity?add_epc=bool"
+        data = {"add_epc": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_tidl(self, value):
+        url = f"{self.base_url}/tagidentity?add_tidl=bool"
+        data = {"add_tidl": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_tid(self, value):
+        url = f"{self.base_url}/tagidentity?add_tid=bool"
+        data = {"add_tid": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_suffix(self, value):
+        url = f"{self.base_url}/tagidentity?add_suffix=String"
+        data = {"add_suffix": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_crlf(self, value):
+        url = f"{self.base_url}/tagidentity?add_crlf=bool"
+        data = {"add_crlf": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_ant(self, value):
+        url = f"{self.base_url}/tagidentity?add_ant=bool"
+        data = {"add_ant": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_add_rssi(self, value):
+        url = f"{self.base_url}/tagidentity?add_rssi=bool"
+        data = {"add_rssi": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_notify_uart_alive(self, value):
+        url = f"{self.base_url}/tagidentity?notify_uart_alive=bool"
+        data = {"notify_uart_alive": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_notify_uart_speed(self, value):
+        url = f"{self.base_url}/tagidentity?notify_uart_speed=value"
+        data = {"notify_uart_speed": value}
+        response = requests.post(url, data=data)
+        return response
+
+################################################################
+
+###Настройка параметров уведомления хоста (tagidentity/notify)
+
+    def set_notify_ip(self, value):
+        url = f"{self.base_url}/tagidentity?notify_ip=value"
+        data = {"notify_ip": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_notify_port(self, value):
+        url = f"{self.base_url}/tagidentity?notify_port=value"
+        data = {"notify_port": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_notify_time_lim_ms(self, value):
+        url = f"{self.base_url}/tagidentity?notify_time_lim_ms=value"
+        data = {"notify_time_lim_ms": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_notify_enable(self, value):
+        url = f"{self.base_url}/tagidentity?notify_enable=bool"
+        data = {"notify_enable": value}
+        response = requests.post(url, data=data)
+        return response
+
+########################################################################
+
+###Команды для работы с Wi-Fi сетью или Ethernet (netinfo, wificonnect, scan)
+
+    def get_netinfo(self):
+        url = f"{self.base_url}/netinfo"
+        response = requests.get(url)
+        return response
+
+    def set_sta_enable(self, value):
+        url = f"{self.base_url}/netinfo?sta_enable=bool"
+        data = {"sta_enable": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_ap_enable(self, value):
+        url = f"{self.base_url}/netinfo?ap_enable=bool"
+        data = {"ap_enable": value}
+        response = requests.post(url, data=data)
+        return response
+
+    def set_wificonnect(self, ssid, password, safe):
+        url = f"{self.base_url}/wificonnect"
+        data = {"ssid": ssid, "pass": password, "safe": safe}
+        response = requests.post(url, data=data)
+        return response
+
+    def scan_wifi(self):
+        url = f"{self.base_url}/scan"
+        response = requests.get(url)
+        return response
+
+################################################################
+
+###Сервисные команды общего назначения
+
+    def logout(self):
+        url = f"{self.base_url}/logout"
+        response = requests.get(url)
+        return response
+
+    def get_messagelog(self):
+        url = f"{self.base_url}/messagelog"
+        response = requests.get(url)
+        return response
+
+    def get_version(self):
+        url = f"{self.base_url}/version"
+        response = requests.get(url)
+        return response
+
+    def reboot(self):
+        url = f"{self.base_url}/reboot"
+        response = requests.get(url)
+        return response
+
+    def beep_device(self):
+        url = f"{self.base_url}/beepdevice"
+        response = requests.get(url)
+        return response
+
+    def inventory_once(self):
+        url = f"{self.base_url}/inventory_once"
+        response = requests.get(url)
+        return response
+
+    def set_relay1(self, time):
+        url = f"{self.base_url}/relay1"
+        data = {"time": time}
+        response = requests.post(url, data=data)
+        return response
+
+################################################################
+
+
+
