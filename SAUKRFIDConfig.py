@@ -74,54 +74,54 @@ class RFIDConfig:
         params = response.json()
         return params
 
-    def set_relay1_enable(self, value):
-        url = f"{self.base_url}/rfidconfig?relay1_enable={str(value).lower()}"
-        response = requests.get(url, auth=(self.login, self.password))
-        response.raise_for_status()
-        return response
-
-    def set_relay1_timer(self, value):
-        url = f"{self.base_url}/rfidconfig?relay1_timer={value}"
-        response = requests.get(url, auth=(self.login, self.password))
-        response.raise_for_status()
-        return response
-
-    def set_wiegand1_enable(self, value):
-        url = f"{self.base_url}/peripheryconfig?wiegand1_enable=bool"
-        data = {"wiegand1_enable": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_wiegand1_type(self, value):
-        url = f"{self.base_url}/peripheryconfig?wiegand1_type=value"
-        data = {"wiegand1_type": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_wiegand1_shift_bytes(self, value):
-        url = f"{self.base_url}/peripheryconfig?wiegand1_shift_bytes=value"
-        data = {"wiegand1_shift_bytes": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_wiegand1_source(self, value):
-        url = f"{self.base_url}/peripheryconfig?wiegand1_source=value"
-        data = {"wiegand1_source": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_beep_on_start(self, value):
-        url = f"{self.base_url}/peripheryconfig?beep_on_start=bool"
-        data = {"beep_on_start": value}
-        response = requests.get(url, data=data)
-        return response
-
-    def set_timeout_logical_0(self, value):
-        url = f"{self.base_url}/peripheryconfig?timeout_logical_0=value"
-        data = {"timeout_logical_0": value}
-        response = requests.get(url, data=data)
-        return response
-
+    # def set_relay1_enable(self, value):
+    #     url = f"{self.base_url}/rfidconfig?relay1_enable={str(value).lower()}"
+    #     response = requests.get(url, auth=(self.login, self.password))
+    #     response.raise_for_status()
+    #     return response
+    #
+    # def set_relay1_timer(self, value):
+    #     url = f"{self.base_url}/rfidconfig?relay1_timer={value}"
+    #     response = requests.get(url, auth=(self.login, self.password))
+    #     response.raise_for_status()
+    #     return response
+    #
+    # def set_wiegand1_enable(self, value):
+    #     url = f"{self.base_url}/peripheryconfig?wiegand1_enable=bool"
+    #     data = {"wiegand1_enable": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_wiegand1_type(self, value):
+    #     url = f"{self.base_url}/peripheryconfig?wiegand1_type=value"
+    #     data = {"wiegand1_type": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_wiegand1_shift_bytes(self, value):
+    #     url = f"{self.base_url}/peripheryconfig?wiegand1_shift_bytes=value"
+    #     data = {"wiegand1_shift_bytes": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_wiegand1_source(self, value):
+    #     url = f"{self.base_url}/peripheryconfig?wiegand1_source=value"
+    #     data = {"wiegand1_source": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_beep_on_start(self, value):
+    #     url = f"{self.base_url}/peripheryconfig?beep_on_start=bool"
+    #     data = {"beep_on_start": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_timeout_logical_0(self, value):
+    #     url = f"{self.base_url}/peripheryconfig?timeout_logical_0=value"
+    #     data = {"timeout_logical_0": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
 
     def set_timeout_next_bit(self, value):
         url = f"{self.base_url}/peripheryconfig?timeout_next_bit=value"
