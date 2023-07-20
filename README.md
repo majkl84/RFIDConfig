@@ -25,7 +25,7 @@
     - set_repeattime() - количество считываний RFID-меток (тонкая настройка)
     - set_min_hold_ms() - минимальное время включения цифрового триггерного порта Hold 
 ----------------------------------------------------------------
-## class PeripheryConfig(ApiClient):
+## class PeripheryConfig():
 ### Настройка параметров периферийных устройств (peripheryconfig)   
 ####    Методы:
     - get_params() - Запрос всех параметров
@@ -42,7 +42,7 @@
     - set_timeout_logical() - Ширина логического сигнала по интерфейсу Wiegand
     - set_timeout_next_bit() - Период следования импульсов по интерфейсу Wiegand
 ----------------------------------------------------------------
-## class TagIdentity(ApiClient):
+## class TagIdentity():
 ### Настройка параметров идентификации RFID-меток (tagidentity)
 ####    Методы:
     - get_params() - возвращаем все параметры
@@ -82,7 +82,7 @@
     - set_notify_time_lim_ms() - таймаут уведомлений
     - set_notify_enable() - вкл./выкл. уведомлений
 ----------------------------------------------------------------
-## class NetworkConfig(ApiClient):
+## class NetworkConfig():
 ### Команды для работы с Wi-Fi сетью или Ethernet (netinfo, wificonnect, scan)
 ####    Методы:
     - get_netinfo() - получить инфо о сети
@@ -91,7 +91,7 @@
     - set_wificonnect() - подключиться к WiFi
     - scan_wifi() - сканирование WiFi
 ----------------------------------------------------------------
-## class SystemCommands(ApiClient):
+## class SystemCommands():
 ### Сервисные команды общего назначения
 ####    Методы:
     - logout() - выход из web-интерфейса
