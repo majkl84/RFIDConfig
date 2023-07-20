@@ -119,3 +119,119 @@ class TagIdentity(ApiClient):
     def set_beep_on_tag(self, value):
         return self.set("tagidentity", {"beep_on_tag": str(value).lower()})
 
+    # def set_extra_mem_read(self, value):
+    #     url = f"{self.base_url}/tagidentity?extra_mem_read=bool"
+    #     data = {"extra_mem_read": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_extra_mem_bank(self, value):
+    #     url = f"{self.base_url}/tagidentity?extra_mem_bank=value"
+    #     data = {"extra_mem_bank": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_data_start_words(self, value):
+    #     url = f"{self.base_url}/tagidentity?data_start_words=value"
+    #     data = {"data_start_words": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+    #
+    # def set_data_len_words(self, value):
+    #     url = f"{self.base_url}/tagidentity?data_len_words=value"
+    #     data = {"data_len_words": value}
+    #     response = requests.get(url, data=data)
+    #     return response
+
+    def set_notify_uart(self, value):
+        return self.set("tagidentity", {"notify_uart": str(value).lower()})
+
+    def set_notify_uart_json(self, value):
+        return self.set("tagidentity", {"notify_uart_json": value})
+
+    def set_add_prefix(self, value):
+        return self.set("tagidentity", {"add_prefix": value})
+
+    def set_add_epcl(self, value):
+        return self.set("tagidentity", {"add_epcl": str(value).lower()})
+
+    def set_add_epc(self, value):
+        return self.set("tagidentity", {"add_epc": str(value).lower()})
+
+    def set_add_tidl(self, value):
+        return self.set("tagidentity", {"add_tidl": str(value).lower()})
+
+    def set_add_tid(self, value):
+        return self.set("tagidentity", {"add_tid": str(value).lower()})
+
+    # def set_add_suffix(self, value):
+    #     return self.set("tagidentity", {"add_suffix": value})
+
+    def set_add_crlf(self, value):
+        return self.set("tagidentity", {"add_crlf": str(value).lower()})
+
+    def set_add_ant(self, value):
+        return self.set("tagidentity", {"add_ant": str(value).lower()})
+
+    def set_add_rssi(self, value):
+        return self.set("tagidentity", {"add_rssi": str(value).lower()})
+
+    def set_notify_uart_alive(self, value):
+        return self.set("tagidentity", {"notify_uart_alive": str(value).lower()})
+
+    def set_notify_uart_speed(self, value):
+        return self.set("tagidentity", {"notify_uart_speed": value})
+
+    def set_notify_ip(self, value):
+        return self.set("tagidentity", {"notify_ip": value})
+
+    def set_notify_port(self, value):
+        return self.set("tagidentity", {"notify_port": value})
+
+    def set_notify_time_lim_ms(self, value):
+        return self.set("tagidentity", {"notify_time_lim_ms": value})
+
+    def set_notify_enable(self, value):
+        return self.set("tagidentity", {"notify_enable": str(value).lower()})
+
+
+class NetworkConfig(ApiClient):
+
+    def get_netinfo(self):
+        return self.get("netinfo").json()
+
+    def set_sta_enable(self, value):
+        return self.set("netinfo", {"sta_enable": str(value).lower()})
+
+    def set_ap_enable(self, value):
+        return self.set("netinfo", {"ap_enable": str(value).lower()})
+
+    def set_wificonnect(self, ssid, password, safe):
+        data = {"ssid": ssid, "pass": password, "safe": safe}
+        return self.set("wificonnect", data)
+
+    def scan_wifi(self):
+        return self.get("scan").json()
+
+class SystemCommands(ApiClient):
+  def logout(self):
+    return self.get("logout")
+
+  def get_messagelog(self):
+    return self.get("messagelog").json()
+
+  def get_version(self):
+    return self.get("version").json()
+
+  def reboot(self):
+    return self.get("reboot")
+
+  def beep_device(self):
+    return self.get("beepdevice")
+
+  def inventory_once(self):
+    return self.get("inventory_once")
+
+  def set_relay(self, time):
+    return self.set("relay1", {"time": time})
+
