@@ -102,35 +102,29 @@
     - inventory_once() - однократная инвентаризация
     - set_relay() - управление реле 1
 ----------------------------------------------------------------
-## Примеры
-    rfid_config = RFIDConfig("http://192.168.10.1", "admin", "admin")
-### Получение текущих настроек RFID:    
-    params = rfid_config.get_params()
-    print(params)
+# Примеры
+## Работа с настройками RFID
+### Получить текущие настройки RFID:
+    rfid = RFIDConfig(url, login, pass)
+    params = rfid.get_params()
+### Включить непрерывное сканирование:
+    rfid.set_continuous_scanning(True)
+### Установить мощность антенны:
+    rfid.set_power_antenna(20) 
 
-### Включение режима непрерывной инвентаризации:
+## Работа с настройками периферии
+### Получить текущие настройки:
+    periphery = PeripheryConfig(url, login, pass)
+    params = periphery.get_params()
+### Включить реле 1 на 5 секунд:
+    periphery.set_relay(5000, 1) 
+## Работа с идентификацией тегов
+### Получить список обнаруженных тегов:
+    tags = TagIdentity(url, login, pass)
+    tag_list = tags.get_tag_list()
+### Добавить префикс к идентификатору тега:
+    tags.set_add_prefix("TAG_")
+### Включить звуковой сигнал при обнаружении тега:
+    tags.set_beep_on_tag(True)
 
-    response = rfid_config.set_infinite_inventory(True)
-
-### Установка мощности антенны на 20 дБм:
-
-    rfid.set_power_antenna(20)
-
-### Включение фильтра по RSSI -80 дБм:
-
-    rfid.set_rssi_filter_enable(True)
-    rfid.set_rssi_filter_value(80)
-
-### Добавление префикса в уведомления UART:
- 
-    rfid.set_add_prefix("RFID:")
-
-### Подключение к WiFi сети:
-
-    rfid.set_wificonnect("MyWiFi", "password123", False)
-
-### Перезагрузка устройства:
-
-    rfid.reboot()
-
-Таким образом, класс позволяет управлять всеми основными параметрами RFID-считывателя и интегрировать его в различные системы.
+Таким образом, библиотека позволяет управлять всеми основными параметрами RFID-считывателя и интегрировать его в различные системы.
