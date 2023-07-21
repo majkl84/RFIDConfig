@@ -1,4 +1,4 @@
-from SAUKRFIDConfig import RFIDConfig
+from RFIDConfig_OLD import RFIDConfig
 import pprint
 
 if __name__ == '__main__':
