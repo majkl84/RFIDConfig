@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SAUK-RFIDConfig.iml" filepath="$PROJECT_DIR$/.idea/SAUK-RFIDConfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/RFIDConfig.iml" filepath="$PROJECT_DIR$/.idea/RFIDConfig.iml" />
     </modules>
   </component>
 </project>

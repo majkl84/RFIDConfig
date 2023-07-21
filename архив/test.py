@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from SAUKRFIDConfig import RFIDConfig
+from RFIDConfig_OLD import RFIDConfig
 
 
 class TestRFIDConfig(unittest.TestCase):
