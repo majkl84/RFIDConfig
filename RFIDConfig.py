@@ -46,6 +46,7 @@ class RFIDConfig(ApiClient):
     def set_min_hold_ms(self, value):
         return self.set("rfidconfig", {"min_hold_ms": value})
 
+
 class PeripheryConfig(ApiClient):
 
     def get_params(self):
@@ -81,9 +82,9 @@ class PeripheryConfig(ApiClient):
     def set_timeout_logical(self, value):
         return self.set("peripheryconfig", {"timeout_logical_0": value})
 
-
     def set_timeout_next_bit(self, value):
         return self.set("peripheryconfig", {"timeout_next_bit": value})
+
 
 class TagIdentity(ApiClient):
 
@@ -95,7 +96,8 @@ class TagIdentity(ApiClient):
 
     def set_valid_time_ms(self, value):
         return self.set("tagidentity", {"validtime_ms": value})
-###????
+
+    ###????
     def set_hold_time_ms(self, value):
         return self.set("tagidentity", {"hold_time_ms": value})
 
@@ -213,25 +215,25 @@ class NetworkConfig(ApiClient):
     def scan_wifi(self):
         return self.get("scan").json()
 
+
 class SystemCommands(ApiClient):
-  def logout(self):
-    return self.get("logout")
+    def logout(self):
+        return self.get("logout")
 
-  def get_messagelog(self):
-    return self.get("messagelog").json()
+    def get_messagelog(self):
+        return self.get("messagelog").json()
 
-  def get_version(self):
-    return self.get("version").json()
+    def get_version(self):
+        return self.get("version").json()
 
-  def reboot(self):
-    return self.get("reboot")
+    def reboot(self):
+        return self.get("reboot")
 
-  def beep_device(self):
-    return self.get("beepdevice")
+    def beep_device(self):
+        return self.get("beepdevice")
 
-  def inventory_once(self):
-    return self.get("inventory_once")
+    def inventory_once(self):
+        return self.get("inventory_once")
 
-  def set_relay(self, time):
-    return self.set("relay1", {"time": time})
-
+    def set_relay(self, time):
+        return self.set("relay1", {"time": time})
