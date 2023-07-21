@@ -23,13 +23,14 @@ class RFIDConfig(ApiClient):
         return self.get("rfidconfig").json()
 
     def set_continuous_scanning(self, value):
-        return self.set("rfidconfig", {"infiniteinventory": str(value).lower()})
+        return self.set("rfidconfig", {"infiniteinventory": str(value).lower()}).json()
 
-    def set_power_antenna(self, value):
-        return self.set("rfidconfig", {"pwrant1": value})
+    def set_power_antenna(self, value, ch):
+        params = {f"pwrant{ch}": value}
+        return self.set("rfidconfig", params).json()
 
     def set_enable_antenna(self, value):
-        return self.set("rfidconfig", {"enant1": str(value).lower()})
+        return self.set("rfidconfig", {"enant1": str(value).lower()}).json()
 
     def set_enable_trigger(self, value):
         return self.set("rfidconfig", {"entrig1": str(value).lower()})
