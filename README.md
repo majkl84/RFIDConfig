@@ -117,8 +117,8 @@
 ### Получить текущие настройки:
     periphery = PeripheryConfig(url, login, pass)
     params = periphery.get_params()
-### Включить реле 1 на 5 секунд:
-    periphery.set_relay(5000, 1) 
+### Замкнуть реле на время, указанное в настройках коммутации реле:
+    periphery.set_relay() 
 ## Работа с идентификацией тегов
 ### Получить список обнаруженных тегов:
     tags = TagIdentity(url, login, pass)
