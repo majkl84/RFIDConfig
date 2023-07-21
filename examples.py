@@ -1,8 +1,8 @@
 from RFIDConfig import RFIDConfig, PeripheryConfig, TagIdentity, NetworkConfig, SystemCommands
 import pprint
-base_url = "http://192.168.2.245"
-login = "admin"
-password = "admin"
+base_url = "http://192.168.2.245" # IP address устройства
+login = "admin" # Логин для устройства
+password = "admin" # Пароль для устройства
 
 rfid_config = RFIDConfig(base_url, login, password)
 periphery_config = PeripheryConfig(base_url, login, password)
@@ -109,3 +109,5 @@ system = SystemCommands(base_url, login, password)
 # system.set_relay()
 
 ################################################################
+
+# pprint.pprint(params)
