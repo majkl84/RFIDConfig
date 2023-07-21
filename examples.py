@@ -10,10 +10,19 @@ tag_identity = TagIdentity(base_url, login, password)
 net_config = NetworkConfig(base_url, login, password)
 system = SystemCommands(base_url, login, password)
 
+
+### Настройка параметров RFID-тракта (rfidconfig)
+
 # params = rfid_config.get_params()
 # params = rfid_config.set_continuous_scanning(True) # Непрерывное сканирование
-# params = rfid_config.set_enable_antenna(True) # вкл/выкл антенны
 # params = rfid_config.set_power_antenna(19, 1) # задаем мощность антенны
+# params = rfid_config.set_enable_antenna(True, 1) # вкл/выкл антенны
+params = rfid_config.set_enable_trigger(True, 1) # вкл/выкл Hold триггера
+
+################################################################
+
+### Настройка параметров периферийных устройств (peripheryconfig)
+
 # periphery_config.set_relay_unit_enable(True)
 # periphery_config.set_relay_enable(True, 1)
 # tag_identity.set_beep_on_tag(True)

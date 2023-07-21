@@ -29,11 +29,13 @@ class RFIDConfig(ApiClient):
         params = {f"pwrant{ch}": value}
         return self.set("rfidconfig", params).json()
 
-    def set_enable_antenna(self, value):
-        return self.set("rfidconfig", {"enant1": str(value).lower()}).json()
+    def set_enable_antenna(self, value, ch):
+        params = {f"enant{ch}": str(value).lower()}
+        return self.set("rfidconfig", params).json()
 
-    def set_enable_trigger(self, value):
-        return self.set("rfidconfig", {"entrig1": str(value).lower()})
+    def set_enable_trigger(self, value, ch):
+        params = {f"entrig{ch}": str(value).lower()}
+        return self.set("rfidconfig", params).json()
 
     def set_trigger_state(self, value):
         return self.set("rfidconfig", {"triggered1": value})
