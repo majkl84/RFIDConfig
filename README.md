@@ -1,4 +1,4 @@
-# SAUK-RFIDConfig
+# RFIDConfig 
 
 ## Библиотека для настройки параметров RFID-считывателя
 
