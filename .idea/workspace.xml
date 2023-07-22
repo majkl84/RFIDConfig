@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f4af95-a795-48ff-8743-0772fc4fcd5a" name="Changes" comment="">
+    <list default="true" id="585738f9-b268-4744-9bb6-c474673c8c19" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RFIDConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/RFIDConfig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +20,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2SsV7Tq3whQAgej04KibJFZ6dFf" />
+  <component name="ProjectId" id="2SvgRMxTmQ1N8Fx0USP8NmCYj9V" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,26 +35,19 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="40f4af95-a795-48ff-8743-0772fc4fcd5a" name="Changes" comment="" />
-      <created>1689935107848</created>
+      <changelist id="585738f9-b268-4744-9bb6-c474673c8c19" name="Changes" comment="" />
+      <created>1690032463610</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-
-      <updated>1689864016762</updated>
-      <workItem from="1689864028747" duration="4658000" />
-      <workItem from="1689869671355" duration="12228000" />
-      <workItem from="1689913615030" duration="961000" />
-
-      <updated>1689935107848</updated>
-      <workItem from="1689935113687" duration="3718000" />
-      <workItem from="1689938847244" duration="1438000" />
-
+      <updated>1690032463610</updated>
+      <workItem from="1690032510328" duration="576000" />
+      <workItem from="1690033147331" duration="634000" />
     </task>
     <servers />
   </component>
@@ -66,13 +59,20 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RFIDConfig$examples.coverage" NAME="examples Coverage Results" MODIFIED="1689939879476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RFIDConfig$RFIDConfig.coverage" NAME="RFIDConfig Coverage Results" MODIFIED="1690033314702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/beta" />
+    <SUITE FILE_PATH="coverage/RFIDConfig$examples.coverage" NAME="examples Coverage Results" MODIFIED="1690033653137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/beta" />
   </component>
 </project>
