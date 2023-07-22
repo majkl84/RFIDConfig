@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="585738f9-b268-4744-9bb6-c474673c8c19" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beta/RFIDConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/beta/RFIDConfig.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1690032463610</updated>
       <workItem from="1690032510328" duration="576000" />
-      <workItem from="1690033147331" duration="634000" />
+      <workItem from="1690033147331" duration="1454000" />
     </task>
     <servers />
   </component>

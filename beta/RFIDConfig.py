@@ -24,14 +24,26 @@ class ApiClient:
             sys.exit(1)
 
     def get(self, endpoint):
-        self._check_base_url()
         url = f"{self.base_url}/{endpoint}"
-        return requests.get(url, auth=(self.login, self.password))
+        try:
+            response = requests.get(url, auth=(self.login, self.password))
+            response.raise_for_status()
+        except requests.HTTPError as err:
+            print(f"Ошибка при GET запросе: {err}")
+            sys.exit(1)
+
+        return response.json()
 
     def set(self, endpoint, params):
-        self._check_base_url()
         url = f"{self.base_url}/{endpoint}"
-        return requests.get(url, params=params, auth=(self.login, self.password))
+        try:
+            response = requests.get(url, params=params, auth=(self.login, self.password))
+            response.raise_for_status()
+        except requests.HTTPError as err:
+            print(f"Ошибка при SET запросе: {err}")
+            sys.exit(1)
+
+        return response.json()
 
 
 class RFIDConfig(ApiClient):
