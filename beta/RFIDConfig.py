@@ -3,6 +3,7 @@ import socket
 from urllib.parse import urlparse
 import sys
 
+
 class ApiClient:
 
     def __init__(self, base_url, login, password):
@@ -76,7 +77,7 @@ class RFIDConfig(ApiClient):
         params = {f"entrig{ch}": str(value).lower()}
         return self.set("rfidconfig", params).json()
 
-####????????
+    ####????????
     def set_trigger_state(self, value, ch):
         params = {f"triggered{ch}": value}
         return self.set("rfidconfig", params).json()
@@ -142,7 +143,6 @@ class TagIdentity(ApiClient):
     def get_tag_list(self):
         response = self.get("tagidentity?taglist=true").json()
         return response['list']
-
 
     def set_valid_time_ms(self, value):
         return self.set("tagidentity", {"validtime_ms": value}).json()
