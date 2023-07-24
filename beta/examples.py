@@ -103,7 +103,7 @@ system = SystemCommands(base_url, login, password)
 
 # system.logout() # - выход из web-интерфейса
 # params = system.get_messagelog() # - получить лог сообщений
-# params = system.get_version()
+params = system.get_version()
 # system.reboot()
 # system.beep_device() # - звуковой сигнал
 # system.inventory_once() # - однократная инвентаризация
