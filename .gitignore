@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 README-old.md
 dashboard.js
+workspace.xml

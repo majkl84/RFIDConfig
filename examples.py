@@ -27,7 +27,7 @@ system = SystemCommands(base_url, login, password)
 
 ### Настройка параметров периферийных устройств (peripheryconfig)
 
-# params = periphery_config.get_params()
+params = periphery_config.get_params()
 # params = periphery_config.set_relay_unit_enable(False) # вкл/выкл блока реле
 # params = periphery_config.set_relay_enable(True, 1) # вкл/выкл реле в метод передаем True/False и № реле
 # params = periphery_config.set_relay_timer(400, 1) # в метод передаем значение ms и № реле
@@ -110,4 +110,4 @@ system = SystemCommands(base_url, login, password)
 
 ################################################################
 
-# pprint.pprint(params)
+pprint.pprint(params)

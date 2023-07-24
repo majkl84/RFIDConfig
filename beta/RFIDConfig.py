@@ -3,13 +3,13 @@ import socket
 from urllib.parse import urlparse
 import sys
 
-
 class ApiClient:
 
     def __init__(self, base_url, login, password):
         self.base_url = base_url
         self.login = login
         self.password = password
+        self._check_base_url()
 
     def _check_base_url(self):
         try:
@@ -23,43 +23,43 @@ class ApiClient:
             print("Ошибка: устройство недоступно")
             sys.exit(1)
 
-    def get(self, endpoint):
-        self._check_base_url()
-        url = f"{self.base_url}/{endpoint}"
-        return requests.get(url, auth=(self.login, self.password))
-
-    def set(self, endpoint, params):
-        self._check_base_url()
-        url = f"{self.base_url}/{endpoint}"
-        return requests.get(url, params=params, auth=(self.login, self.password))
-
     # def get(self, endpoint):
+    #     self._check_base_url()
     #     url = f"{self.base_url}/{endpoint}"
-    #     try:
-    #         response = requests.get(url, auth=(self.login, self.password))
-    #         response.raise_for_status()
-    #     except requests.HTTPError as err:
-    #         print(f"Ошибка при GET запросе: {err}")
-    #         sys.exit(1)
-    #
-    #     return response.json()
+    #     return requests.get(url, auth=(self.login, self.password))
     #
     # def set(self, endpoint, params):
+    #     self._check_base_url()
     #     url = f"{self.base_url}/{endpoint}"
-    #     try:
-    #         response = requests.get(url, params=params, auth=(self.login, self.password))
-    #         response.raise_for_status()
-    #     except requests.HTTPError as err:
-    #         print(f"Ошибка при SET запросе: {err}")
-    #         sys.exit(1)
-    #
-    #     return response.json()
+    #     return requests.get(url, params=params, auth=(self.login, self.password))
+
+    def get(self, endpoint):
+        url = f"{self.base_url}/{endpoint}"
+        try:
+            response = requests.get(url, auth=(self.login, self.password))
+            response.raise_for_status()
+        except requests.exceptions.RequestException as err:
+            print(f"Ошибка при GET запросе: {err}")
+            sys.exit(1)
+
+        return response
+
+    def set(self, endpoint, data):
+        url = f"{self.base_url}/{endpoint}"
+        try:
+            response = requests.get(url, json=data, auth=(self.login, self.password))
+            response.raise_for_status()
+        except requests.exceptions.RequestException as err:
+            print(f"Ошибка при SET запросе: {err}")
+            sys.exit(1)
+
+        return response
 
 
 class RFIDConfig(ApiClient):
 
     def get_params(self):
-        return self.get("rfidconfig").json()
+        return super().get("rfidconfig").json()
 
     def set_continuous_scanning(self, value):
         return self.set("rfidconfig", {"infiniteinventory": str(value).lower()}).json()
@@ -103,6 +103,10 @@ class PeripheryConfig(ApiClient):
         params = {f"smartboard_port{ch}_enable": str(value).lower()}
         return self.set("peripheryconfig", params).json()
 
+    def set_relay_enable_ant(self, value, ch):
+        params = {f"smartboard_port{ch}_ants=": str(value).lower()}
+        return self.set("peripheryconfig", params).json()
+
     def set_relay_timer(self, value, ch):
         params = {f"smartboard_port{ch}_timer": str(value).lower()}
         return self.set("peripheryconfig", params).json()
@@ -136,7 +140,9 @@ class TagIdentity(ApiClient):
         return self.get("tagidentity").json()
 
     def get_tag_list(self):
-        return self.get("tagidentity?taglist=true").json()
+        response = self.get("tagidentity?taglist=true").json()
+        return response['list']
+
 
     def set_valid_time_ms(self, value):
         return self.set("tagidentity", {"validtime_ms": value}).json()
