@@ -13,9 +13,9 @@ system = SystemCommands(base_url, login, password)
 
 ### Настройка параметров RFID-тракта (rfidconfig)
 
-params = rfid_config.get_params()
+# params = rfid_config.get_params()
 # params = rfid_config.set_continuous_scanning(True) # Непрерывное сканирование
-# params = rfid_config.set_power_antenna(19, 1) # задаем мощность антенны
+# params = rfid_config.set_power_antenna(20, 1) # задаем мощность антенны
 # params = rfid_config.set_enable_antenna(True, 1) # вкл/выкл антенны
 # params = rfid_config.set_enable_trigger(True, 1) # вкл/выкл Hold триггера
 # params = rfid_config.set_trigger_state(1, 1) # вкл/выкл конкретной антенны для Hold триггера ???????
@@ -30,6 +30,8 @@ params = rfid_config.get_params()
 # params = periphery_config.get_params()
 # params = periphery_config.set_relay_unit_enable(False) # вкл/выкл блока реле
 # params = periphery_config.set_relay_enable(True, 1) # вкл/выкл реле в метод передаем True/False и № реле
+params = periphery_config.set_relay_enable_ant(15, 2) # от какой антенны вкл/выкл реле в метод передаем значение и номер блока реле
+# params = periphery_config.set_relay_enable_ant(10, 2) # от какой антенны вкл/выкл реле в метод передаем значение и номер блока реле
 # params = periphery_config.set_relay_timer(400, 1) # в метод передаем значение ms и № реле
 # params = periphery_config.set_wiegand_enable(True, 1) # в метод передаем True/False и № Wiegand
 # params = periphery_config.set_wiegand_type(34) # в метод передаем тип Wiegand 26/34

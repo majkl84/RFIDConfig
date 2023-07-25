@@ -103,6 +103,10 @@ class PeripheryConfig(ApiClient):
         params = {f"smartboard_port{ch}_enable": str(value).lower()}
         return self.set("peripheryconfig", params).json()
 
+    def set_relay_enable_ant(self, value, ch):
+        params = {f"smartboard_port{ch}_ants=": str(value).lower()}
+        return self.set("peripheryconfig", params).json()
+
     def set_relay_timer(self, value, ch):
         params = {f"smartboard_port{ch}_timer": str(value).lower()}
         return self.set("peripheryconfig", params).json()

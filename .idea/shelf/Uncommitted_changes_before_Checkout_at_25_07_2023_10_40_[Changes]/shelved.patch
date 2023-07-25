@@ -1,0 +1,118 @@
+Index: beta/examples.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from RFIDConfig import RFIDConfig, PeripheryConfig, TagIdentity, NetworkConfig, SystemCommands\r\nimport pprint\r\nbase_url = \"http://192.168.2.245\" # IP address устройства\r\nlogin = \"admin\" # Логин для устройства\r\npassword = \"admin\" # Пароль для устройства\r\n\r\nrfid_config = RFIDConfig(base_url, login, password)\r\nperiphery_config = PeripheryConfig(base_url, login, password)\r\ntag_identity = TagIdentity(base_url, login, password)\r\nnet_config = NetworkConfig(base_url, login, password)\r\nsystem = SystemCommands(base_url, login, password)\r\n\r\n\r\n### Настройка параметров RFID-тракта (rfidconfig)\r\n\r\n# params = rfid_config.get_params()\r\n# params = rfid_config.set_continuous_scanning(True) # Непрерывное сканирование\r\n# params = rfid_config.set_power_antenna(20, 1) # задаем мощность антенны\r\n# params = rfid_config.set_enable_antenna(True, 1) # вкл/выкл антенны\r\n# params = rfid_config.set_enable_trigger(True, 1) # вкл/выкл Hold триггера\r\n# params = rfid_config.set_trigger_state(1, 1) # вкл/выкл конкретной антенны для Hold триггера ???????\r\n# params = rfid_config.set_antenna_dependency(4)\r\n# params = rfid_config.set_repeattime(1)\r\n# params = rfid_config.set_min_hold_ms(5000)\r\n\r\n################################################################\r\n\r\n### Настройка параметров периферийных устройств (peripheryconfig)\r\n\r\n# params = periphery_config.get_params()\r\n# params = periphery_config.set_relay_unit_enable(False) # вкл/выкл блока реле\r\n# params = periphery_config.set_relay_enable(True, 1) # вкл/выкл реле в метод передаем True/False и № реле\r\n# params = periphery_config.set_relay_enable_ant(10, 2) # от какой антенны вкл/выкл реле в метод передаем значение и номер блока реле\r\n# params = periphery_config.set_relay_timer(400, 1) # в метод передаем значение ms и № реле\r\n# params = periphery_config.set_wiegand_enable(True, 1) # в метод передаем True/False и № Wiegand\r\n# params = periphery_config.set_wiegand_type(34) # в метод передаем тип Wiegand 26/34\r\n# params = periphery_config.set_wiegand_shift_bytes(2)\r\n# params = periphery_config.set_wiegand_source(1)\r\n# params = periphery_config.set_beep_on_start(True)\r\n# params = periphery_config.set_timeout_logical(100)\r\n# params = periphery_config.set_timeout_next_bit(900)\r\n\r\n################################################################\r\n\r\n### Настройка параметров идентификации RFID-меток (tagidentity)\r\n\r\n# params = tag_identity.get_params()\r\n# params = tag_identity.get_tag_list()\r\n# params = tag_identity.set_valid_time_ms(5000)\r\n# params = tag_identity.set_hold_time_ms(2000) # глюк в интерфейсе\r\n# params = tag_identity.set_rssi_filter_value(50)\r\n# params = tag_identity.set_rssi_filter_enable(False)\r\n# params = tag_identity.set_epc_access_password(00000000)\r\n# params = tag_identity.set_epc_filter_value(\"E280699500\", 2)\r\n# params = tag_identity.set_epc_filter_enable(True, 1)\r\n# params = tag_identity.set_beep_on_tag(True)\r\n# - set_extra_mem_read() - Чтение дополнительного сектора памяти. Элемент проверка «Свой-чужой»\r\n# - set_extra_mem_bank() - Номер банка памяти из которого будем читать данные. Элемент проверка «Свой-чужой»\r\n# - set_data_start_words() - Первый блок памяти который будет читаться (в словах, по 2 байта)\r\n# - set_data_len_words() - Количество данных, которые будут читаться (в словах, по 2 байта\r\n\r\n\r\n################################################################\r\n\r\n###Настройка уведомлений о RFID-метках, отправляемых по каналу уведомлений UART (RS232, RS485)\r\n\r\n# params = tag_identity.set_notify_uart(True)\r\n# params = tag_identity.set_notify_uart_json(0)\r\n# params = tag_identity.set_add_prefix() # - к посылке по UART добавить префикс, строка до 4 байт ????\r\n# params = tag_identity.set_add_epcl(1) # - к посылке по UART добавить длину EPC-кода (измеряемую в байтах)\r\n# params = tag_identity.set_add_epc(1) # - к посылке по UART добавить код EPC\r\n# params = tag_identity.set_add_tidl(1) # - к посылке по UART добавить длину TID-кода (измеряемую в байтах)\r\n# params = tag_identity.set_add_tid(1) # - к посылке по UART добавить код TID\r\n# params = tag_identity.set_add_suffix(1) # - к посылке по UART добавить префикс, строка до 4 байт\r\n# params = tag_identity.set_add_crlf(1) # - к посылке по UART добавлять «возврат каретки \\r 0x0D CR» и «перевод строки \\n 0x0A LF»\r\n# params = tag_identity.set_add_ant(1) # - к посылке по UART добавить номер антенны, которая обнаружила метку\r\n# params = tag_identity.set_add_rssi(1) # - к посылке по UART добавить силу сигнала от метки RSSI\r\n# params = tag_identity.set_notify_uart_alive(False)\r\n# params = tag_identity.set_notify_uart_speed(115200)\r\n\r\n################################################################\r\n\r\n###Настройка параметров уведомления хоста (tagidentity/notify)\r\n\r\n# params = tag_identity.set_notify_ip(\"192.168.1.55\")\r\n# params = tag_identity.set_notify_port(8090)\r\n# params = tag_identity.set_notify_time_lim_ms(500)\r\n# params = tag_identity.set_notify_enable(True)\r\n\r\n##########################################\r\n\r\n###Команды для работы с Wi-Fi сетью или Ethernet (netinfo, wificonnect, scan)\r\n\r\n# params = net_config.get_netinfo()\r\n# params = net_config.set_sta_enable(True)\r\n# params = net_config.set_ap_enable(True)\r\n# params = net_config.set_wificonnect(\"wifi_ssid\", \"password123\", True)\r\n# params = net_config.scan_wifi()\r\n\r\n################################################################\r\n\r\n###class SystemCommands():\r\n\r\n# system.logout() # - выход из web-интерфейса\r\n# params = system.get_messagelog() # - получить лог сообщений\r\nparams = system.get_version()\r\n# system.reboot()\r\n# system.beep_device() # - звуковой сигнал\r\n# system.inventory_once() # - однократная инвентаризация\r\n# system.set_relay()\r\n\r\n################################################################\r\n\r\npprint.pprint(params)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/beta/examples.py b/beta/examples.py
+--- a/beta/examples.py	(revision 118853c97098ef9ae94431d16b5de42176d0aba8)
++++ b/beta/examples.py	(date 1690267658815)
+@@ -30,7 +30,7 @@
+ # params = periphery_config.get_params()
+ # params = periphery_config.set_relay_unit_enable(False) # вкл/выкл блока реле
+ # params = periphery_config.set_relay_enable(True, 1) # вкл/выкл реле в метод передаем True/False и № реле
+-# params = periphery_config.set_relay_enable_ant(10, 2) # от какой антенны вкл/выкл реле в метод передаем значение и номер блока реле
++params = periphery_config.set_relay_enable_ant(15, 2) # от какой антенны вкл/выкл реле в метод передаем значение и номер блока реле
+ # params = periphery_config.set_relay_timer(400, 1) # в метод передаем значение ms и № реле
+ # params = periphery_config.set_wiegand_enable(True, 1) # в метод передаем True/False и № Wiegand
+ # params = periphery_config.set_wiegand_type(34) # в метод передаем тип Wiegand 26/34
+@@ -103,7 +103,7 @@
+ 
+ # system.logout() # - выход из web-интерфейса
+ # params = system.get_messagelog() # - получить лог сообщений
+-params = system.get_version()
++# params = system.get_version()
+ # system.reboot()
+ # system.beep_device() # - звуковой сигнал
+ # system.inventory_once() # - однократная инвентаризация
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"40f4af95-a795-48ff-8743-0772fc4fcd5a\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/README.md\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/README.md\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/beta/RFIDConfig.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/beta/RFIDConfig.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/beta/examples.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/beta/examples.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/examples.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/examples.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2SsV7Tq3whQAgej04KibJFZ6dFf\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"settings.editor.selected.configurable\": \"settings.json.schema\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"40f4af95-a795-48ff-8743-0772fc4fcd5a\" name=\"Changes\" comment=\"\" />\r\n      <created>1689935107848</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1689935107848</updated>\r\n      <workItem from=\"1689935113687\" duration=\"3718000\" />\r\n      <workItem from=\"1689938847244\" duration=\"1438000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/RFIDConfig$RFIDConfig.coverage\" NAME=\"RFIDConfig Coverage Results\" MODIFIED=\"1690194899459\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/beta\" />\r\n    <SUITE FILE_PATH=\"coverage/RFIDConfig$examples.coverage\" NAME=\"examples Coverage Results\" MODIFIED=\"1690201742570\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"true\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/beta\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 118853c97098ef9ae94431d16b5de42176d0aba8)
++++ b/.idea/workspace.xml	(date 1690268603126)
+@@ -4,12 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="40f4af95-a795-48ff-8743-0772fc4fcd5a" name="Changes" comment="">
++    <list default="true" id="f64de808-83d0-4eb5-838d-77075b9d676c" name="Changes" comment="Возврат к истокам">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/beta/RFIDConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/beta/RFIDConfig.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/beta/examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/beta/examples.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -17,45 +14,22 @@
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="118853c97098ef9ae94431d16b5de42176d0aba8" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="MarkdownSettingsMigration">
+-    <option name="stateVersion" value="1" />
+-  </component>
+-  <component name="ProjectId" id="2SsV7Tq3whQAgej04KibJFZ6dFf" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "settings.editor.selected.configurable": "settings.json.schema"
++    "node.js.selected.package.tslint": "(autodetect)"
+   }
+ }]]></component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="40f4af95-a795-48ff-8743-0772fc4fcd5a" name="Changes" comment="" />
+-      <created>1689935107848</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1689935107848</updated>
+-      <workItem from="1689935113687" duration="3718000" />
+-      <workItem from="1689938847244" duration="1438000" />
+-    </task>
+     <servers />
+   </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+       <map>
+@@ -67,8 +41,11 @@
+       </map>
+     </option>
+   </component>
++  <component name="VcsManagerConfiguration">
++    <option name="LAST_COMMIT_MESSAGE" value="" />
++  </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/RFIDConfig$RFIDConfig.coverage" NAME="RFIDConfig Coverage Results" MODIFIED="1690194899459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/beta" />
+-    <SUITE FILE_PATH="coverage/RFIDConfig$examples.coverage" NAME="examples Coverage Results" MODIFIED="1690201742570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/beta" />
++    <SUITE FILE_PATH="coverage/RFIDConfig$examples.coverage" NAME="examples Coverage Results" MODIFIED="1690267678148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/beta" />
+   </component>
+ </project>
+\ No newline at end of file
