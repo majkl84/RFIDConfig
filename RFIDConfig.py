@@ -81,7 +81,16 @@ class PeripheryConfig(ApiClient):
         return self.set("peripheryconfig", {"smartboard_enable": str(value).lower()})
 
     def set_relay_enable(self, value, ch):
-        return self.set("peripheryconfig", {f"smartboard_port{ch}_enable": str(value).lower()})
+        response = self.set("peripheryconfig", {f"smartboard_port{ch}_enable": str(value).lower()})
+        data = response
+        smartboard_data = data['smartboard']
+        if ch == 1:
+            if value != smartboard_data['port_enable'][0]:
+                return (f"Not Good: {value} != {smartboard_data['port_enable'][0]} for ch = {ch}")
+        if ch == 2:
+            if value != smartboard_data['port_enable'][1]:
+                return (f"Not Good: {value} != {smartboard_data['port_enable'][1]} for ch = {ch}")
+        return "Good"
 
     def set_relay_enable_ant(self, value, ch):
         response = self.set("peripheryconfig", {f"smartboard_port{ch}_ants": str(value).lower()})

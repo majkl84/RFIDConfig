@@ -29,8 +29,8 @@ system = SystemCommands(base_url, login, password)
 
 # params = periphery_config.get_params()
 # params = periphery_config.set_relay_unit_enable(False) # вкл/выкл блока реле
-# params = periphery_config.set_relay_enable(True, 1) # вкл/выкл реле в метод передаем True/False и № реле
-params = periphery_config.set_relay_enable_ant(2, 10) # от какой антенны вкл/выкл реле в метод передаем значение и номер блока реле
+params = periphery_config.set_relay_enable(True, 2) # вкл/выкл реле в метод передаем True/False и № реле
+# params = periphery_config.set_relay_enable_ant(10, 2) # от какой антенны вкл/выкл реле в метод передаем значение и номер блока реле
 # params = periphery_config.set_relay_timer(400, 1) # в метод передаем значение ms и № реле
 # params = periphery_config.set_wiegand_enable(True, 1) # в метод передаем True/False и № Wiegand
 # params = periphery_config.set_wiegand_type(34) # в метод передаем тип Wiegand 26/34
