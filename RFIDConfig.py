@@ -115,7 +115,17 @@ class PeripheryConfig(ApiClient):
         return "Good"
 
     def set_wiegand_enable(self, value, ch):
-        return self.set("peripheryconfig", {f"wiegand{ch}_enable": str(value).lower()})
+        response = self.set("peripheryconfig", {f"wiegand{ch}_enable": str(value).lower()})
+        data = response
+        wire_wiegand_data = data['wire_wiegand']
+        if ch == value:
+            if value != wire_wiegand_data['turn_on_timer'][0]:
+                return (f"Not Good: {value} != {wire_wiegand_data['port_enable'][0]} for ch = {ch}")
+        if ch == value:
+            if value != wire_wiegand_data['turn_on_timer'][1]:
+                return (f"Not Good: {value} != {wire_wiegand_data['port_enable'][1]} for ch = {ch}")
+        return "Good"
+
 
     def set_wiegand_type(self, value):
         return self.set("peripheryconfig", {"wiegand1_type": value})
