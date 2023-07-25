@@ -84,7 +84,14 @@ class PeripheryConfig(ApiClient):
         return self.set("peripheryconfig", {f"smartboard_port{ch}_enable": str(value).lower()})
 
     def set_relay_enable_ant(self, value, ch):
-        return self.set("peripheryconfig", {f"smartboard_port{ch}_ants": str(value).lower()})
+        response = self.set("peripheryconfig", {f"smartboard_port{ch}_ants": str(value).lower()})
+        data = response
+        smartboard_data = data['smartboard']
+        if value not in smartboard_data['port_depends']:
+            return f"Not Good: {value} not in {smartboard_data['port_depends']}"
+        if ch not in smartboard_data['port_depends']:
+            return f"Not Good: {ch} not in {smartboard_data['port_depends']}"
+        return "Good"
 
     def set_relay_timer(self, value, ch):
         return self.set("peripheryconfig", {f"smartboard_port{ch}_timer": str(value).lower()})
@@ -256,7 +263,9 @@ class SystemCommands(ApiClient):
 
     def inventory_once(self):
         return self.get("inventory_once")
+
     def saving_settings(self):
         return self.get("makedump")
+
     def set_relay(self):
         return self.get("relay1")
