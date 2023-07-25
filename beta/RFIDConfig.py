@@ -65,21 +65,17 @@ class RFIDConfig(ApiClient):
         return self.set("rfidconfig", {"infiniteinventory": str(value).lower()}).json()
 
     def set_power_antenna(self, value, ch):
-        params = {f"pwrant{ch}": value}
-        return self.set("rfidconfig", params).json()
+        return self.set("rfidconfig", {f"pwrant{ch}": value}).json()
 
     def set_enable_antenna(self, value, ch):
-        params = {f"enant{ch}": str(value).lower()}
-        return self.set("rfidconfig", params).json()
+        return self.set("rfidconfig", {f"enant{ch}": str(value).lower()}).json()
 
     def set_enable_trigger(self, value, ch):
-        params = {f"entrig{ch}": str(value).lower()}
-        return self.set("rfidconfig", params).json()
+        return self.set("rfidconfig", {f"entrig{ch}": str(value).lower()}).json()
 
 ####????????
     def set_trigger_state(self, value, ch):
-        params = {f"triggered{ch}": value}
-        return self.set("rfidconfig", params).json()
+        return self.set("rfidconfig", {f"triggered{ch}": value}).json()
 
     def set_antenna_dependency(self, value):
         return self.set("rfidconfig", {"rf_session": value}).json()
@@ -100,19 +96,16 @@ class PeripheryConfig(ApiClient):
         return self.set("peripheryconfig", {"smartboard_enable": str(value).lower()}).json()
 
     def set_relay_enable(self, value, ch):
-        params = {f"smartboard_port{ch}_enable": str(value).lower()}
-        return self.set("peripheryconfig", params).json()
+        return self.set("peripheryconfig", {f"smartboard_port{ch}_enable": str(value).lower()}).json()
 
     def set_relay_enable_ant(self, value, ch):
         return self.set("peripheryconfig", {f"smartboard_port{ch}_ants": str(value).lower()}).json()
 
     def set_relay_timer(self, value, ch):
-        params = {f"smartboard_port{ch}_timer": str(value).lower()}
-        return self.set("peripheryconfig", params).json()
+        return self.set("peripheryconfig", {f"smartboard_port{ch}_timer": str(value).lower()}).json()
 
     def set_wiegand_enable(self, value, ch):
-        params = {f"wiegand{ch}_enable": str(value).lower()}
-        return self.set("peripheryconfig", params).json()
+        return self.set("peripheryconfig", {f"wiegand{ch}_enable": str(value).lower()}).json()
 
     def set_wiegand_type(self, value):
         return self.set("peripheryconfig", {"wiegand1_type": value}).json()
@@ -158,12 +151,10 @@ class TagIdentity(ApiClient):
         return self.set("tagidentity", {"epc_access_password": value}).json()
 
     def set_epc_filter_value(self, value, filter):
-        params = {f"epc_filter_value{filter}": str(value).lower()}.json()
-        return self.set("tagidentity", params)
+        return self.set("tagidentity", {f"epc_filter_value{filter}": str(value).lower()}.json())
 
     def set_epc_filter_enable(self, value, filter):
-        params = {f"epc_filter_enable{filter}": str(value).lower()}.json()
-        return self.set("tagidentity", params)
+        return self.set("tagidentity", {f"epc_filter_enable{filter}": str(value).lower()}.json())
 
     def set_beep_on_tag(self, value):
         return self.set("tagidentity", {"beep_on_tag": str(value).lower()}).json()
@@ -256,8 +247,7 @@ class NetworkConfig(ApiClient):
         return self.set("netinfo", {"ap_enable": str(value).lower()}).json()
 
     def set_wificonnect(self, ssid, password, safe):
-        data = {"ssid": ssid, "pass": password, "safe": safe}
-        return self.set("wificonnect", data).json()
+        return self.set("wificonnect", {"ssid": ssid, "pass": password, "safe": safe}).json()
 
     def scan_wifi(self):
         return self.get("scan").json()
