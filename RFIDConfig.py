@@ -103,7 +103,16 @@ class PeripheryConfig(ApiClient):
         return "Good"
 
     def set_relay_timer(self, value, ch):
-        return self.set("peripheryconfig", {f"smartboard_port{ch}_timer": str(value).lower()})
+        response = self.set("peripheryconfig", {f"smartboard_port{ch}_timer": str(value).lower()})
+        data = response
+        smartboard_data = data['smartboard']
+        if ch == value:
+            if value != smartboard_data['turn_on_timer'][0]:
+                return (f"Not Good: {value} != {smartboard_data['port_enable'][0]} for ch = {ch}")
+        if ch == value:
+            if value != smartboard_data['turn_on_timer'][1]:
+                return (f"Not Good: {value} != {smartboard_data['port_enable'][1]} for ch = {ch}")
+        return "Good"
 
     def set_wiegand_enable(self, value, ch):
         return self.set("peripheryconfig", {f"wiegand{ch}_enable": str(value).lower()})
