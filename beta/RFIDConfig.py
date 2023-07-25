@@ -12,54 +12,40 @@ class ApiClient:
         self.password = password
 
     def _check_base_url(self):
-        try:
-            url = urlparse(self.base_url)
-            host = url.netloc
-            port = url.port if url.port else 80
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        url = urlparse(self.base_url)
+        host = url.netloc
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             sock.settimeout(2)
-            sock.connect((host, port))
-        except socket.error:
-            print("Ошибка: устройство недоступно")
-            sys.exit(1)
+            sock.connect((host, url.port if url.port else 80))
+
 
     def get(self, endpoint):
-        self._check_base_url()
         url = f"{self.base_url}/{endpoint}"
-        return requests.get(url, auth=(self.login, self.password))
+        try:
+            response = requests.get(url, auth=(self.login, self.password))
+            response.raise_for_status()
+        except requests.RequestException as err:
+            print(f"Ошибка при GET запросе: {err}")
+            sys.exit(1)
+
+        return response.json()
 
     def set(self, endpoint, params):
-        self._check_base_url()
         url = f"{self.base_url}/{endpoint}"
-        return requests.get(url, params=params, auth=(self.login, self.password))
+        try:
+            response = requests.get(url, params=params, auth=(self.login, self.password))
+            response.raise_for_status()
+        except requests.RequestException as err:
+            print(f"Ошибка при SET запросе: {err}")
+            sys.exit(1)
 
-    # def get(self, endpoint):
-    #     url = f"{self.base_url}/{endpoint}"
-    #     try:
-    #         response = requests.get(url, auth=(self.login, self.password))
-    #         response.raise_for_status()
-    #     except requests.HTTPError as err:
-    #         print(f"Ошибка при GET запросе: {err}")
-    #         sys.exit(1)
-    #
-    #     return response.json()
-    #
-    # def set(self, endpoint, params):
-    #     url = f"{self.base_url}/{endpoint}"
-    #     try:
-    #         response = requests.get(url, params=params, auth=(self.login, self.password))
-    #         response.raise_for_status()
-    #     except requests.HTTPError as err:
-    #         print(f"Ошибка при SET запросе: {err}")
-    #         sys.exit(1)
-    #
-    #     return response.json()
+        return response.json()
 
 
 class RFIDConfig(ApiClient):
 
     def get_params(self):
-        return self.get("rfidconfig").json()
+        return self.get("rfidconfig")
 
     def set_continuous_scanning(self, value):
         return self.set("rfidconfig", {"infiniteinventory": str(value).lower()}).json()
@@ -99,7 +85,7 @@ class PeripheryConfig(ApiClient):
         return self.set("peripheryconfig", {f"smartboard_port{ch}_enable": str(value).lower()}).json()
 
     def set_relay_enable_ant(self, value, ch):
-        return self.set("peripheryconfig", {f"smartboard_port{ch}_ants": str(value).lower()}).json()
+        return self.set("peripheryconfig", {f"smartboard_port{ch}_ants": str(value).lower()})
 
     def set_relay_timer(self, value, ch):
         return self.set("peripheryconfig", {f"smartboard_port{ch}_timer": str(value).lower()}).json()
