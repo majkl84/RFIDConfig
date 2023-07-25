@@ -256,6 +256,7 @@ class SystemCommands(ApiClient):
 
     def inventory_once(self):
         return self.get("inventory_once")
-
+    def saving_settings(self):
+        return self.get("makedump")
     def set_relay(self):
         return self.get("relay1")
