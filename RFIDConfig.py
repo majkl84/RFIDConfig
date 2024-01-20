@@ -96,8 +96,11 @@ class TagIdentity(ApiClient):
     def get_params(self):
         return self.get("tagidentity").json()
 
-    def get_tag_list(self):
+    def get_tag_identity(self):
         return self.get("tagidentity?taglist=true").json()
+
+    def get_tag_list(self):
+        return self.get("taglist").json()
 
     def set_valid_time_ms(self, value):
         return self.set("tagidentity", {"validtime_ms": value}).json()

@@ -27,7 +27,7 @@ system = SystemCommands(base_url, login, password)
 
 ### Настройка параметров периферийных устройств (peripheryconfig)
 
-params = periphery_config.get_params()
+# params = periphery_config.get_params()
 # params = periphery_config.set_relay_unit_enable(False) # вкл/выкл блока реле
 # params = periphery_config.set_relay_enable(True, 1) # вкл/выкл реле в метод передаем True/False и № реле
 # params = periphery_config.set_relay_timer(400, 1) # в метод передаем значение ms и № реле
@@ -44,7 +44,8 @@ params = periphery_config.get_params()
 ### Настройка параметров идентификации RFID-меток (tagidentity)
 
 # params = tag_identity.get_params()
-# params = tag_identity.get_tag_list()
+# params = tag_identity.get_tag_identity()
+params = tag_identity.get_tag_list()
 # params = tag_identity.set_valid_time_ms(5000)
 # params = tag_identity.set_hold_time_ms(2000) # глюк в интерфейсе
 # params = tag_identity.set_rssi_filter_value(50)
